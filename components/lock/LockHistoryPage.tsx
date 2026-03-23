@@ -516,6 +516,14 @@ const LockHistoryDetail: React.FC<LockHistoryDetailProps> = ({ lock, onBack }) =
                     </span>
                   </div>
                 )}
+                {lockDetail.lock.actualUnlockAt && (
+                  <div className="flex justify-between">
+                    <span className="text-slate-500 dark:text-slate-400 text-sm">实际锁时</span>
+                    <span className="text-emerald-600 dark:text-emerald-400 text-sm font-semibold">
+                      {formatDuration(Math.round((new Date(lockDetail.lock.actualUnlockAt).getTime() - new Date(lockDetail.lock.startedAt).getTime()) / 60000))}
+                    </span>
+                  </div>
+                )}
                 {/* 隐藏时间模式下，只有正式解锁后才显示时间增减 */}
                 {(!lockDetail.lock.hideRemainingTime ||
                   lockDetail.lock.status === 'UNLOCKED' ||

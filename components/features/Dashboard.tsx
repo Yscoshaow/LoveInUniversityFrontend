@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { TaskCardSkeleton, LockCardSkeleton, ManagedLockSkeleton } from '../ui/Skeleton';
 import { useScrollDirection } from '../../hooks/useScrollDirection';
 import { ScheduleEvent, SelfLock, ScheduleSummary, SelfLockSummary, UserTaskDetail, UserOptionalTaskGroupDisplay, OptionalTaskGroupDatePreview, LOCK_TYPE_NAMES, KEYHOLDER_PERMISSION_NAMES, ManagedLockSummary, SupervisorTaskDetail, RouletteTaskInstance } from '../../types';
 import {
@@ -431,8 +432,8 @@ export const Dashboard: React.FC<DashboardProps> = ({
         </div>
 
         {(isLoadingSchedules || isLoadingTasks || isLoadingSupervisorTasks) ? (
-          <div className="mb-8 p-8 flex justify-center">
-            <Loader2 size={24} className="text-slate-300 dark:text-slate-600 animate-spin" />
+          <div className="mb-8 space-y-3">
+            <TaskCardSkeleton /><TaskCardSkeleton />
           </div>
         ) : (sortedSchedules.length > 0 || tasks.length > 0 || supervisorTasks.length > 0) ? (
           <div className="space-y-4 mb-8">
@@ -523,9 +524,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
             </div>
 
             {isLoadingOptionalTaskGroups ? (
-              <div className="p-8 flex justify-center">
-                <Loader2 size={24} className="text-slate-300 dark:text-slate-600 animate-spin" />
-              </div>
+              <div className="space-y-3"><TaskCardSkeleton /></div>
             ) : isToday ? (
               <div className="space-y-4">
                 {optionalTaskGroups.map((group) => (
@@ -571,9 +570,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
             </div>
 
             {isLoadingRouletteTasks ? (
-              <div className="p-8 flex justify-center">
-                <Loader2 size={24} className="text-slate-300 dark:text-slate-600 animate-spin" />
-              </div>
+              <div className="space-y-3"><TaskCardSkeleton /></div>
             ) : (
               <div className="space-y-3">
                 {rouletteTasks.map((instance) => (
@@ -612,9 +609,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
           </div>
 
           {isLoadingLocks ? (
-            <div className="p-8 flex justify-center">
-              <Loader2 size={24} className="text-slate-300 dark:text-slate-600 animate-spin" />
-            </div>
+            <div className="flex flex-col gap-4"><LockCardSkeleton /><LockCardSkeleton /></div>
           ) : (
             <div className="flex flex-col gap-4">
               {locks.map((lock) => (
@@ -651,9 +646,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
             </div>
 
             {isLoadingManagedLocks ? (
-              <div className="p-8 flex justify-center">
-                <Loader2 size={24} className="text-slate-300 dark:text-slate-600 animate-spin" />
-              </div>
+              <div className="flex flex-col gap-3"><ManagedLockSkeleton /><ManagedLockSkeleton /></div>
             ) : (
               <div className="flex flex-col gap-3">
                 {managedLocks.map((lock) => (

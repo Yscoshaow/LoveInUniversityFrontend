@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { PlaygroundLockSkeleton, TaskCardSkeleton, PostCardSkeleton } from '../ui/Skeleton';
 import { useScrollDirection } from '../../hooks/useScrollDirection';
 import { SelfLockSummary, LOCK_TYPE_NAMES, PostItem, TaskRequestSummary, TaskRequestStatus, TaskRequestProposalDetail
  } from '../../types';
@@ -700,7 +701,7 @@ export const CampusTasks: React.FC<CampusTasksProps> = ({ onLockClick, onPostCli
         ) : activeSegment === 'playground' ? (
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
             {/* Playground Locks */}
-            {isLoadingPlayground ? renderLoading() :
+            {isLoadingPlayground ? <div className="space-y-4"><PlaygroundLockSkeleton /><PlaygroundLockSkeleton /><PlaygroundLockSkeleton /></div> :
               playgroundLocks.length === 0 ? renderEmpty('暂无公开的锁') :
               <div className="space-y-4">
                 {playgroundLocks.map(lock => renderLockCard(lock, () => onLockClick?.(lock)))}
@@ -735,9 +736,7 @@ export const CampusTasks: React.FC<CampusTasksProps> = ({ onLockClick, onPostCli
                 我的求任务
               </h2>
               {myTaskRequestsQuery.isLoading ? (
-                <div className="flex justify-center py-8">
-                  <Loader2 className="w-6 h-6 animate-spin text-slate-400 dark:text-slate-500" />
-                </div>
+                <div className="space-y-3"><TaskCardSkeleton /><TaskCardSkeleton /></div>
               ) : myTaskRequests.length > 0 ? (
                 <div className="space-y-3">
                   {myTaskRequests.map(req => (
@@ -785,9 +784,7 @@ export const CampusTasks: React.FC<CampusTasksProps> = ({ onLockClick, onPostCli
                 我的提案
               </h2>
               {myProposalsQuery.isLoading ? (
-                <div className="flex justify-center py-8">
-                  <Loader2 className="w-6 h-6 animate-spin text-slate-400 dark:text-slate-500" />
-                </div>
+                <div className="space-y-3"><TaskCardSkeleton /><TaskCardSkeleton /></div>
               ) : myProposals.length > 0 ? (
                 <div className="space-y-3">
                   {myProposals.map(proposal => (
@@ -826,9 +823,7 @@ export const CampusTasks: React.FC<CampusTasksProps> = ({ onLockClick, onPostCli
                 我的帖子
               </h2>
               {isLoadingMyPosts ? (
-                <div className="flex justify-center py-8">
-                  <Loader2 className="w-6 h-6 animate-spin text-slate-400 dark:text-slate-500" />
-                </div>
+                <div className="space-y-3"><PostCardSkeleton /><PostCardSkeleton /></div>
               ) : myPosts.length > 0 ? (
                 <div className="space-y-3">
                   {myPosts.map(post => (

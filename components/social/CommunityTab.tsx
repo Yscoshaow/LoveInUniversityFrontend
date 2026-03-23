@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { PostCardSkeleton } from '../ui/Skeleton';
 import { createPortal } from 'react-dom';
 import {
   PostItem,
@@ -611,8 +612,8 @@ export const CommunityTab: React.FC<CommunityTabProps> = ({ onUserClick, onPostC
       {/* Post list */}
       <div>
         {isLoading && posts.length === 0 ? (
-          <div className="flex items-center justify-center py-12">
-            <Loader2 className="animate-spin text-primary" size={32} />
+          <div className="divide-y divide-slate-100 dark:divide-slate-700">
+            <PostCardSkeleton /><PostCardSkeleton /><PostCardSkeleton />
           </div>
         ) : posts.length === 0 ? (
           <div className="p-8 text-center">
