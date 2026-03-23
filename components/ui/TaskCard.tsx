@@ -398,7 +398,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onClick, onStart, onCo
           {/* IN_PROGRESS - Different actions based on task type */}
           {task.status === 'IN_PROGRESS' && canExecuteTask && (
             <>
-              {/* COUNT Task - Increment button */}
+              {/* COUNT Task - Increment button (not yet reached target) */}
               {task.taskType === 'COUNT' && onIncrement && task.actualValue < task.targetValue && (
                 <button
                   onClick={(e) => handleActionClick(e, () => onIncrement(task), 'increment')}
@@ -406,6 +406,17 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onClick, onStart, onCo
                   className="w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors disabled:opacity-50"
                 >
                   {loadingAction === 'increment' ? <Loader2 size={14} className="animate-spin" /> : <Plus size={16} strokeWidth={3} />}
+                </button>
+              )}
+
+              {/* COUNT Task - Complete button (target reached but not auto-completed) */}
+              {task.taskType === 'COUNT' && onComplete && task.actualValue >= task.targetValue && (
+                <button
+                  onClick={(e) => handleActionClick(e, () => onComplete(task, task.actualValue), 'complete')}
+                  disabled={isLoading}
+                  className="px-3 py-1.5 bg-green-500 text-white text-xs font-semibold rounded-lg hover:bg-green-600 transition-colors disabled:opacity-50"
+                >
+                  {loadingAction === 'complete' ? <Loader2 size={12} className="animate-spin" /> : '完成'}
                 </button>
               )}
 
