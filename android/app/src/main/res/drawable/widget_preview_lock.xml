@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background gradient -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:type="linear"
+                android:angle="135"
+                android:startColor="#E11D48"
+                android:centerColor="#EC4899"
+                android:endColor="#FB7185" />
+            <corners android:radius="24dp" />
+        </shape>
+    </item>
+    <!-- Lock icon overlay -->
+    <item
+        android:gravity="center"
+        android:width="48dp"
+        android:height="48dp">
+        <shape android:shape="oval">
+            <solid android:color="#33FFFFFF" />
+        </shape>
+    </item>
+</layer-list>

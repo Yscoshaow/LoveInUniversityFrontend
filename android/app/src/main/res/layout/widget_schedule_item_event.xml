@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/event_item_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@drawable/schedule_item_bg"
+    android:paddingStart="0dp"
+    android:paddingEnd="10dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:layout_marginBottom="4dp">
+
+    <!-- Left color indicator bar -->
+    <ImageView
+        android:id="@+id/event_indicator"
+        android:layout_width="4dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/indicator_purple"
+        android:scaleType="fitXY"
+        android:contentDescription="" />
+
+    <!-- Time column -->
+    <TextView
+        android:id="@+id/text_event_time"
+        android:layout_width="42dp"
+        android:layout_height="wrap_content"
+        android:textColor="#6366F1"
+        android:textSize="12sp"
+        android:fontFamily="sans-serif-bold"
+        android:gravity="center" />
+
+    <!-- Middle: title + location -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginStart="8dp">
+
+        <TextView
+            android:id="@+id/text_event_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#1E293B"
+            android:textSize="13sp"
+            android:fontFamily="sans-serif-medium"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/text_event_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#94A3B8"
+            android:textSize="11sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <!-- Right: action button -->
+    <ImageButton
+        android:id="@+id/btn_event_action"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_check"
+        android:background="@drawable/btn_action_complete"
+        android:padding="7dp"
+        android:scaleType="centerInside"
+        android:layout_marginStart="8dp"
+        android:contentDescription="" />
+
+    <!-- Completed text -->
+    <TextView
+        android:id="@+id/text_event_done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/schedule_done"
+        android:textColor="#10B981"
+        android:textSize="11sp"
+        android:fontFamily="sans-serif-medium"
+        android:layout_marginStart="8dp"
+        android:visibility="gone" />
+</LinearLayout>

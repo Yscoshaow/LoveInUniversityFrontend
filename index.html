@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>LoveIn University</title>
+    <!-- Google Fonts: non-blocking load (blocked on Huawei/China devices without Google services) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
+    <!-- Telegram Web App SDK: only load synchronously inside Telegram, skip on Capacitor/browser -->
+    <script>
+      if (window.TelegramWebviewProxy || location.hash.indexOf('tgWebAppData') !== -1 || navigator.userAgent.indexOf('Telegram') !== -1) {
+        document.write('<scr'+'ipt src="https://telegram.org/js/telegram-web-app.js?59"><\/scr'+'ipt>');
+      }
+    </script>
+    <!-- Anti-FOUC: apply dark class before first paint -->
+    <script>
+      try {
+        var t = localStorage.getItem('lovein-theme');
+        if (t === 'dark' || (t !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch(e){}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">LoveIn</string>
+    <string name="title_activity_main">LoveIn</string>
+    <string name="package_name">com.lovein.university</string>
+    <string name="custom_url_scheme">com.lovein.university</string>
+
+    <!-- Widget -->
+    <string name="widget_name">锁状态</string>
+    <string name="widget_description">显示当前活跃的锁状态</string>
+    <string name="widget_no_active_lock">暂无活跃的锁</string>
+    <string name="widget_please_login">请先登录</string>
+    <string name="lock_icon_desc">锁类型图标</string>
+    <string name="timer_icon_desc">计时器</string>
+    <string name="likes_desc">点赞数</string>
+
+    <!-- Schedule Widget -->
+    <string name="schedule_widget_name">今日日程</string>
+    <string name="schedule_widget_description">显示今日的日程和任务</string>
+    <string name="schedule_widget_title">今日日程</string>
+    <string name="schedule_no_items">暂无日程安排</string>
+    <string name="schedule_please_login">请先登录</string>
+    <string name="schedule_refresh">刷新</string>
+    <string name="schedule_done">已完成</string>
+    <string name="schedule_auto">自动</string>
+    <string name="schedule_timing">计时中</string>
+
+    <!-- Managed Lock Widget -->
+    <string name="managed_widget_name">管理锁</string>
+    <string name="managed_widget_description">显示你管理的锁的状态</string>
+    <string name="managed_widget_config_title">选择管理的锁</string>
+    <string name="managed_widget_config_subtitle">选择一个你管理的锁来显示在小组件上</string>
+    <string name="managed_widget_no_locks">暂无管理的锁</string>
+
+    <!-- Music Widget -->
+    <string name="music_widget_name">音乐播放器</string>
+    <string name="music_widget_description">控制音乐播放和查看当前曲目</string>
+    <string name="music_widget_open_app">打开应用</string>
+    <string name="music_widget_not_playing">暂无播放</string>
+    <string name="music_widget_play_pause">播放/暂停</string>
+    <string name="music_widget_prev">上一首</string>
+    <string name="music_widget_next">下一首</string>
+</resources>
