@@ -1513,10 +1513,32 @@ const CampusWalkPage: React.FC<CampusWalkPageProps> = ({ onBack }) => {
 
       {/* Map fallback / loading states */}
       {!mapLoaded && !mapError && (
-        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-gray-900">
-          <div className="text-center">
-            <Loader2 className="w-8 h-8 animate-spin text-indigo-400 mx-auto mb-2" />
-            <p className="text-sm text-gray-500 dark:text-gray-400">正在加载地图...</p>
+        <div className="absolute inset-0 bg-gray-100 dark:bg-gray-900">
+          {/* Top bar skeleton */}
+          <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-4 pt-12 pb-6">
+            <div className="flex items-center gap-3">
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full h-9 w-9" />
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-5 w-24" />
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full h-9 w-16" />
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full h-9 w-9" />
+            </div>
+          </div>
+          {/* Map area skeleton */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-center space-y-3">
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full h-12 w-12 mx-auto" />
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-28 mx-auto" />
+            </div>
+          </div>
+          {/* Bottom panel skeleton */}
+          <div className="absolute bottom-6 left-4 right-4">
+            <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur rounded-2xl p-4 space-y-3">
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-32" />
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-full" />
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-2/3" />
+            </div>
           </div>
         </div>
       )}

@@ -113,8 +113,56 @@ export const MemoryDetailPage: React.FC<MemoryDetailPageProps> = ({
 
   if (isLoading) {
     return (
-      <div className="h-full bg-white dark:bg-slate-800 flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-slate-400 dark:text-slate-500" />
+      <div className="h-full bg-white dark:bg-slate-800 flex flex-col lg:max-w-[900px] lg:mx-auto lg:w-full">
+        {/* Header/image area skeleton */}
+        <div className="relative shrink-0 h-64 bg-slate-200 dark:bg-slate-700 animate-pulse">
+          {/* Back button placeholder */}
+          <div className="absolute top-0 left-0 p-4 pt-8">
+            <div className="w-10 h-10 rounded-full bg-slate-300 dark:bg-slate-600 animate-pulse" />
+          </div>
+          {/* Bottom overlay info skeleton */}
+          <div className="absolute bottom-0 left-0 right-0 p-4 space-y-2">
+            <div className="bg-slate-300 dark:bg-slate-600 animate-pulse rounded-full h-5 w-20" />
+            <div className="bg-slate-300 dark:bg-slate-600 animate-pulse rounded-xl h-6 w-48" />
+            <div className="flex items-center gap-3">
+              <div className="bg-slate-300 dark:bg-slate-600 animate-pulse rounded-xl h-4 w-24" />
+              <div className="bg-slate-300 dark:bg-slate-600 animate-pulse rounded-xl h-4 w-12" />
+            </div>
+          </div>
+        </div>
+        {/* Content area skeleton */}
+        <div className="flex-1 -mt-4 bg-white dark:bg-slate-800 rounded-t-[32px] relative z-10">
+          <div className="p-6 space-y-6">
+            {/* Creator info */}
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-700 animate-pulse" />
+              <div className="flex-1 space-y-1.5">
+                <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-24" />
+                <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-32" />
+              </div>
+            </div>
+            {/* Content lines */}
+            <div className="space-y-2">
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-full" />
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-full" />
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-5/6" />
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-3/4" />
+            </div>
+            {/* Location skeleton */}
+            <div className="bg-slate-50 dark:bg-slate-900 rounded-xl p-4 flex items-center gap-3">
+              <div className="w-10 h-10 rounded-lg bg-slate-200 dark:bg-slate-700 animate-pulse" />
+              <div className="flex-1 space-y-1.5">
+                <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-8" />
+                <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-28" />
+              </div>
+            </div>
+            {/* Stats row skeleton */}
+            <div className="flex items-center gap-6 py-4 border-t border-b border-slate-100 dark:border-slate-700">
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-5 w-12" />
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-5 w-12" />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

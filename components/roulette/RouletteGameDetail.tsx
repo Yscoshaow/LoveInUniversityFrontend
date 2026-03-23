@@ -306,8 +306,69 @@ export const RouletteGameDetail: React.FC<RouletteGameDetailProps> = ({
 
   if (isLoading) {
     return (
-      <div className="h-full flex items-center justify-center bg-slate-50 dark:bg-slate-900">
-        <Loader2 className="animate-spin text-teal-500 dark:text-teal-400" size={32} />
+      <div className="h-full flex flex-col bg-slate-50 dark:bg-slate-900">
+        {/* Cover image skeleton */}
+        <div className="relative w-full h-48 bg-slate-200 dark:bg-slate-700 animate-pulse">
+          {/* Back button placeholder */}
+          <div className="absolute top-4 left-4 w-10 h-10 rounded-full bg-slate-300 dark:bg-slate-600" />
+          {/* Title overlay placeholder */}
+          <div className="absolute bottom-0 left-0 right-0 p-4 space-y-2">
+            <div className="h-6 w-48 rounded-lg bg-slate-300 dark:bg-slate-600" />
+            <div className="flex items-center gap-2">
+              <div className="w-5 h-5 rounded-full bg-slate-300 dark:bg-slate-600" />
+              <div className="h-3 w-20 rounded-full bg-slate-300 dark:bg-slate-600" />
+            </div>
+          </div>
+        </div>
+
+        {/* Tags skeleton */}
+        <div className="bg-white dark:bg-slate-800 px-4 py-2 border-b border-slate-100 dark:border-slate-700 flex items-center gap-1.5">
+          <div className="h-4 w-12 rounded-full bg-slate-200 dark:bg-slate-700 animate-pulse" />
+          <div className="h-4 w-14 rounded-full bg-slate-200 dark:bg-slate-700 animate-pulse" />
+          <div className="h-4 w-10 rounded-full bg-slate-200 dark:bg-slate-700 animate-pulse" />
+        </div>
+
+        {/* Stats bar skeleton */}
+        <div className="bg-white dark:bg-slate-800 px-4 py-3 border-b border-slate-100 dark:border-slate-700 flex items-center justify-around">
+          <div className="text-center space-y-1">
+            <div className="h-5 w-10 rounded bg-slate-200 dark:bg-slate-700 animate-pulse mx-auto" />
+            <div className="h-2.5 w-8 rounded-full bg-slate-200 dark:bg-slate-700 animate-pulse mx-auto" />
+          </div>
+          <div className="w-px h-8 bg-slate-100 dark:bg-slate-700" />
+          <div className="text-center space-y-1">
+            <div className="h-5 w-10 rounded bg-slate-200 dark:bg-slate-700 animate-pulse mx-auto" />
+            <div className="h-2.5 w-8 rounded-full bg-slate-200 dark:bg-slate-700 animate-pulse mx-auto" />
+          </div>
+          <div className="w-px h-8 bg-slate-100 dark:bg-slate-700" />
+          <div className="h-9 w-16 rounded-xl bg-slate-200 dark:bg-slate-700 animate-pulse" />
+        </div>
+
+        {/* Content area skeleton */}
+        <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
+          {/* Description skeleton */}
+          <div className="space-y-2">
+            <div className="h-3.5 w-full rounded-full bg-slate-200 dark:bg-slate-700 animate-pulse" />
+            <div className="h-3.5 w-4/5 rounded-full bg-slate-200 dark:bg-slate-700 animate-pulse" />
+            <div className="h-3.5 w-2/3 rounded-full bg-slate-200 dark:bg-slate-700 animate-pulse" />
+          </div>
+
+          {/* Play button skeleton */}
+          <div className="h-12 w-full rounded-2xl bg-slate-200 dark:bg-slate-700 animate-pulse" />
+
+          {/* Comments section skeleton */}
+          <div className="space-y-3 pt-2">
+            <div className="h-4 w-16 rounded-full bg-slate-200 dark:bg-slate-700 animate-pulse" />
+            {[0, 1, 2].map(i => (
+              <div key={i} className="flex items-start gap-3">
+                <div className="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 animate-pulse shrink-0" />
+                <div className="flex-1 space-y-1.5">
+                  <div className="h-3 w-20 rounded-full bg-slate-200 dark:bg-slate-700 animate-pulse" />
+                  <div className="h-3 w-full rounded-full bg-slate-200 dark:bg-slate-700 animate-pulse" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     );
   }

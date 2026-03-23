@@ -222,8 +222,41 @@ export const ArtGalleryDetailPage: React.FC<ArtGalleryDetailPageProps> = ({ item
 
   if (isLoading) {
     return (
-      <div className="h-full flex items-center justify-center bg-slate-50 dark:bg-slate-900">
-        <div className="w-8 h-8 border-3 border-indigo-300 border-t-indigo-600 rounded-full animate-spin" />
+      <div className="h-full flex flex-col bg-slate-50 dark:bg-slate-900 lg:max-w-[900px] lg:mx-auto lg:w-full">
+        {/* Header skeleton */}
+        <div className="flex items-center px-4 pt-12 lg:pt-4 pb-3 bg-white dark:bg-slate-800 border-b border-slate-100 dark:border-slate-700">
+          <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full h-9 w-9" />
+          <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-5 w-40 ml-3" />
+        </div>
+        <div className="flex-1 overflow-y-auto">
+          {/* Image gallery skeleton */}
+          <div className="w-full aspect-square bg-slate-200 dark:bg-slate-700 animate-pulse" />
+          {/* Info section skeleton */}
+          <div className="p-4 space-y-4">
+            {/* Author row */}
+            <div className="flex items-center gap-3">
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full h-10 w-10" />
+              <div className="flex-1 space-y-2">
+                <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-24" />
+                <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-16" />
+              </div>
+            </div>
+            {/* Title */}
+            <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-6 w-3/4" />
+            {/* Description lines */}
+            <div className="space-y-2">
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-full" />
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-5/6" />
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-2/3" />
+            </div>
+            {/* Stats row */}
+            <div className="flex items-center gap-4 pt-2">
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-16" />
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-16" />
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-20" />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

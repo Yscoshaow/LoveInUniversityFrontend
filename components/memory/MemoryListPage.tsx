@@ -94,8 +94,58 @@ export const MemoryListPage: React.FC<MemoryListPageProps> = ({
       </div>
 
       {isLoading ? (
-        <div className="flex-1 flex items-center justify-center">
-          <Loader2 className="w-8 h-8 animate-spin text-slate-400 dark:text-slate-500" />
+        <div className="flex-1 overflow-y-auto no-scrollbar">
+          {/* Stats skeleton */}
+          <div className="p-4">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-50 dark:border-slate-700">
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-20 mb-3" />
+              <div className="grid grid-cols-3 gap-3">
+                {Array.from({ length: 3 }).map((_, i) => (
+                  <div key={i} className="text-center space-y-1.5">
+                    <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-7 w-10 mx-auto" />
+                    <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-8 mx-auto" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          {/* Filter tabs skeleton */}
+          <div className="px-4 mb-2">
+            <div className="flex gap-2 bg-white dark:bg-slate-800 p-1 rounded-xl border border-slate-100 dark:border-slate-700 lg:max-w-xs">
+              {Array.from({ length: 3 }).map((_, i) => (
+                <div key={i} className="flex-1 py-2 px-3">
+                  <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-lg h-4 w-full" />
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* Memory card skeletons */}
+          <div className="px-4 pb-6 space-y-3 lg:grid lg:grid-cols-2 lg:gap-4 lg:space-y-0">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <div key={i} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-50 dark:border-slate-700 overflow-hidden">
+                {/* Image placeholder (alternate between with/without image) */}
+                {i % 2 === 0 && (
+                  <div className="h-32 bg-slate-200 dark:bg-slate-700 animate-pulse" />
+                )}
+                <div className="p-4">
+                  <div className="flex items-start gap-3">
+                    {i % 2 !== 0 && (
+                      <div className="w-12 h-12 rounded-xl bg-slate-200 dark:bg-slate-700 animate-pulse shrink-0" />
+                    )}
+                    <div className="flex-1 space-y-2">
+                      <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-3/4" />
+                      <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-full" />
+                      <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-5/6" />
+                      <div className="flex items-center gap-3 pt-1">
+                        <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-16" />
+                        <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-8" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       ) : error ? (
         <div className="flex-1 flex flex-col items-center justify-center p-6">

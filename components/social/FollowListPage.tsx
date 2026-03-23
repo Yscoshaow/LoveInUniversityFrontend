@@ -241,8 +241,20 @@ export const FollowListPage: React.FC<FollowListPageProps> = ({
       {/* Content */}
       <div className="flex-1 overflow-y-auto no-scrollbar">
         {isLoading ? (
-          <div className="flex items-center justify-center py-20">
-            <Loader2 size={32} className="animate-spin text-primary" />
+          <div className="p-4 space-y-3">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="bg-white dark:bg-slate-800 rounded-2xl p-4 shadow-soft border border-slate-50 dark:border-slate-700">
+                <div className="flex items-center gap-3">
+                  <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full h-12 w-12 shrink-0" />
+                  <div className="flex-1 space-y-2">
+                    <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-28" />
+                    <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-20" />
+                    <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-2.5 w-16" />
+                  </div>
+                  <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-9 w-20 shrink-0" />
+                </div>
+              </div>
+            ))}
           </div>
         ) : error ? (
           <div className="flex flex-col items-center justify-center py-20 px-6">

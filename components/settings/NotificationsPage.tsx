@@ -318,8 +318,32 @@ export const NotificationsPage: React.FC<NotificationsPageProps> = ({
       {/* Content */}
       <div className="flex-1 overflow-y-auto">
         {loading ? (
-          <div className="flex items-center justify-center py-16">
-            <Loader2 className="animate-spin text-primary" size={32} />
+          <div className="p-4 space-y-6">
+            {/* Date group skeleton */}
+            <div>
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-12 mb-3" />
+              <div className="space-y-2">
+                {[1, 2, 3, 4, 5].map(i => (
+                  <div key={i} className="bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-100 dark:border-slate-700">
+                    <div className="flex gap-3">
+                      {/* Icon skeleton */}
+                      <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl w-10 h-10 shrink-0" />
+                      {/* Content skeleton */}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-start justify-between gap-2 mb-1">
+                          <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-32" />
+                          <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-14 shrink-0" />
+                        </div>
+                        <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-full mt-2" />
+                        <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-3/4 mt-1" />
+                      </div>
+                      {/* Unread dot skeleton */}
+                      <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full w-2 h-2 shrink-0 mt-2" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         ) : error ? (
           <div className="p-8 text-center">

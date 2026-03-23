@@ -124,8 +124,29 @@ const ArtistListView: React.FC<{
       {/* Artist cards */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {isLoading ? (
-          <div className="flex justify-center py-12">
-            <Loader2 className="animate-spin text-purple-500" size={32} />
+          <div className="space-y-4">
+            {[1, 2, 3, 4].map(i => (
+              <div key={i} className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 overflow-hidden">
+                {/* Image preview skeleton */}
+                <div className="flex h-32 overflow-hidden">
+                  {[1, 2, 3].map(j => (
+                    <div key={j} className="flex-1 min-w-0 bg-slate-200 dark:bg-slate-700 animate-pulse" />
+                  ))}
+                </div>
+                <div className="p-3">
+                  <div className="flex items-center gap-3">
+                    <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full w-10 h-10 shrink-0" />
+                    <div className="flex-1">
+                      <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-28 mb-1.5" />
+                      <div className="flex items-center gap-3">
+                        <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-14" />
+                        <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-16" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         ) : artists.length === 0 ? (
           <div className="text-center py-12 text-gray-400">
@@ -245,8 +266,35 @@ const ArtistDetailView: React.FC<{
 
   if (isLoading || !artist) {
     return (
-      <div className="flex justify-center items-center h-full">
-        <Loader2 className="animate-spin text-purple-500" size={32} />
+      <div className="flex flex-col h-full">
+        {/* Header skeleton */}
+        <div className="sticky top-0 z-10 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 px-4 py-3 flex items-center gap-3">
+          <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full w-8 h-8" />
+          <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-5 w-32" />
+        </div>
+        <div className="flex-1 p-4 space-y-4">
+          {/* Avatar + info skeleton */}
+          <div className="flex items-center gap-4">
+            <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full w-16 h-16 shrink-0" />
+            <div className="flex-1">
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-5 w-36 mb-2" />
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-24 mb-1" />
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-20" />
+            </div>
+          </div>
+          {/* Bio skeleton */}
+          <div className="space-y-2">
+            <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-full" />
+            <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-5/6" />
+            <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-2/3" />
+          </div>
+          {/* Portfolio grid skeleton */}
+          <div className="grid grid-cols-3 gap-2">
+            {[1, 2, 3, 4, 5, 6].map(i => (
+              <div key={i} className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl aspect-square" />
+            ))}
+          </div>
+        </div>
       </div>
     );
   }
@@ -631,7 +679,18 @@ const MyBookingsView: React.FC<{
 
       <div className="flex-1 overflow-y-auto p-4 space-y-3">
         {isLoading ? (
-          <div className="flex justify-center py-12"><Loader2 className="animate-spin text-purple-500" size={32} /></div>
+          <div className="space-y-3">
+            {[1, 2, 3].map(i => (
+              <div key={i} className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 p-4">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full h-5 w-16" />
+                  <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-20" />
+                </div>
+                <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-40 mb-2" />
+                <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-28" />
+              </div>
+            ))}
+          </div>
         ) : !bookings?.length ? (
           <p className="text-center text-gray-400 py-12">暂无预约</p>
         ) : (

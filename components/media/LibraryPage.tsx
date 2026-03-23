@@ -326,8 +326,20 @@ export const LibraryPage: React.FC<LibraryPageProps> = ({ onBack, onBookClick, o
         {activeTab === 'all' && (
           <>
             {(booksLoading || seriesLoading) ? (
-              <div className="flex items-center justify-center py-20">
-                <Loader2 size={24} className="animate-spin text-indigo-400" />
+              <div className={GRID_CLASS}>
+                {Array.from({ length: 8 }).map((_, i) => (
+                  <div key={i} className="flex flex-col w-full bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-700">
+                    <div className="aspect-2/3 w-full bg-slate-200 dark:bg-slate-700 animate-pulse" />
+                    <div className="p-3 space-y-2">
+                      <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-3/4" />
+                      <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-1/2" />
+                      <div className="flex items-center justify-between">
+                        <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-md h-4 w-10" />
+                        <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-8" />
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             ) : (books.length === 0 && (!seriesData?.series?.length)) ? (
               <div className="flex flex-col items-center justify-center py-20 text-slate-400 dark:text-slate-500">
@@ -376,8 +388,19 @@ export const LibraryPage: React.FC<LibraryPageProps> = ({ onBack, onBookClick, o
         {activeTab === 'series' && (
           <>
             {seriesLoading ? (
-              <div className="flex items-center justify-center py-20">
-                <Loader2 size={24} className="animate-spin text-indigo-400" />
+              <div className={GRID_CLASS}>
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <div key={i} className="flex flex-col w-full bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-700">
+                    <div className="aspect-2/3 w-full bg-slate-200 dark:bg-slate-700 animate-pulse" />
+                    <div className="p-3 space-y-2">
+                      <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-3/4" />
+                      <div className="flex items-center justify-between">
+                        <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-md h-4 w-10" />
+                        <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full h-4 w-8" />
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             ) : !seriesData?.series?.length ? (
               <div className="flex flex-col items-center justify-center py-20 text-slate-400 dark:text-slate-500">
@@ -396,8 +419,19 @@ export const LibraryPage: React.FC<LibraryPageProps> = ({ onBack, onBookClick, o
         {activeTab === 'continue' && (
           <>
             {recentLoading ? (
-              <div className="flex items-center justify-center py-20">
-                <Loader2 size={24} className="animate-spin text-indigo-400" />
+              <div className={GRID_CLASS}>
+                {Array.from({ length: 4 }).map((_, i) => (
+                  <div key={i} className="flex flex-col w-full bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-700">
+                    <div className="aspect-2/3 w-full bg-slate-200 dark:bg-slate-700 animate-pulse" />
+                    <div className="p-3 space-y-2">
+                      <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-3/4" />
+                      <div className="flex items-center justify-between">
+                        <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-16" />
+                        <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-8" />
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             ) : !recentlyRead?.length ? (
               <div className="flex flex-col items-center justify-center py-20 text-slate-400 dark:text-slate-500">
@@ -417,8 +451,20 @@ export const LibraryPage: React.FC<LibraryPageProps> = ({ onBack, onBookClick, o
         {activeTab === 'myUploads' && (
           <>
             {uploadsLoading ? (
-              <div className="flex items-center justify-center py-20">
-                <Loader2 size={24} className="animate-spin text-indigo-400" />
+              <div className={GRID_CLASS}>
+                {Array.from({ length: 4 }).map((_, i) => (
+                  <div key={i} className="flex flex-col w-full bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-700">
+                    <div className="aspect-2/3 w-full bg-slate-200 dark:bg-slate-700 animate-pulse" />
+                    <div className="p-3 space-y-2">
+                      <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-3/4" />
+                      <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-1/2" />
+                      <div className="flex items-center justify-between">
+                        <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-md h-4 w-10" />
+                        <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-8" />
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             ) : !myUploads?.length ? (
               <div className="flex flex-col items-center justify-center py-20 text-slate-400 dark:text-slate-500">

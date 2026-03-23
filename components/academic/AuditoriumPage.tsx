@@ -126,8 +126,34 @@ export const AuditoriumPage: React.FC<AuditoriumPageProps> = ({ onBack }) => {
       {/* Content */}
       <div className="flex-1 overflow-y-auto">
         {isLoading ? (
-          <div className="flex items-center justify-center h-64">
-            <Loader2 size={32} className="text-violet-500 dark:text-violet-400 animate-spin" />
+          <div className="p-4 space-y-3">
+            {/* Podium skeleton */}
+            <div className="flex items-end justify-center gap-2 mb-6 pt-4">
+              {[14, 18, 14].map((size, i) => (
+                <div key={i} className="flex flex-col items-center">
+                  <div className={`bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full ${i === 1 ? 'w-[72px] h-[72px]' : 'w-14 h-14'}`} />
+                  <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-16 mt-2" />
+                  <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-2 w-12 mt-1" />
+                  <div className={`bg-slate-200 dark:bg-slate-700 animate-pulse rounded-t-lg w-16 mt-2 ${i === 1 ? 'h-24' : i === 0 ? 'h-16' : 'h-12'}`} />
+                </div>
+              ))}
+            </div>
+
+            {/* Leaderboard row skeletons */}
+            {[1, 2, 3, 4, 5, 6].map(i => (
+              <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
+                <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full w-8 h-8" />
+                <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full w-10 h-10" />
+                <div className="flex-1">
+                  <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-24 mb-1" />
+                  <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-12" />
+                </div>
+                <div className="text-right">
+                  <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-10 mb-1 ml-auto" />
+                  <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-2 w-8 ml-auto" />
+                </div>
+              </div>
+            ))}
           </div>
         ) : error ? (
           <div className="flex flex-col items-center justify-center h-64 px-4">
@@ -303,8 +329,23 @@ export const AuditoriumPage: React.FC<AuditoriumPageProps> = ({ onBack }) => {
           </div>
 
           {changelogsLoading ? (
-            <div className="flex items-center justify-center h-24">
-              <Loader2 size={24} className="text-emerald-500 dark:text-emerald-400 animate-spin" />
+            <div className="space-y-3">
+              {[1, 2, 3].map(i => (
+                <div key={i} className="bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-100 dark:border-slate-700">
+                  <div className="flex items-start justify-between mb-2">
+                    <div className="flex items-center gap-2">
+                      <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full h-5 w-12" />
+                      <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-28" />
+                    </div>
+                    <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-16" />
+                  </div>
+                  <div className="space-y-1.5">
+                    <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-full" />
+                    <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-5/6" />
+                    <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-2/3" />
+                  </div>
+                </div>
+              ))}
             </div>
           ) : !changelogs || changelogs.length === 0 ? (
             <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 text-center border border-slate-100 dark:border-slate-700">

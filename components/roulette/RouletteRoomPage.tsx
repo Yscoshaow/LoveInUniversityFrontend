@@ -681,8 +681,20 @@ const DiscoverTab: React.FC<DiscoverTabProps> = ({
       )}
 
       {isLoading ? (
-        <div className="flex items-center justify-center py-20">
-          <Loader2 className="animate-spin text-teal-500 dark:text-teal-400" size={32} />
+        <div className="grid grid-cols-2 gap-3">
+          {[1, 2, 3, 4].map(i => (
+            <div key={i} className={`rounded-2xl overflow-hidden bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 ${i === 1 ? 'col-span-2' : ''}`}>
+              <div className={`bg-slate-200 dark:bg-slate-700 animate-pulse w-full ${i === 1 ? 'h-48' : 'h-32'}`} />
+              <div className="p-3">
+                <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-3/4 mb-2" />
+                <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-1/2 mb-3" />
+                <div className="flex items-center gap-3">
+                  <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-10" />
+                  <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-10" />
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       ) : games.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-20 px-6">
@@ -736,8 +748,22 @@ const FavoritesTab: React.FC<FavoritesTabProps> = ({
 }) => {
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center py-20">
-        <Loader2 className="animate-spin text-teal-500 dark:text-teal-400" size={32} />
+      <div className="p-4">
+        <div className="grid grid-cols-2 gap-3">
+          {[1, 2, 3, 4].map(i => (
+            <div key={i} className="rounded-2xl overflow-hidden bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse w-full h-32" />
+              <div className="p-3">
+                <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-3/4 mb-2" />
+                <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-1/2 mb-3" />
+                <div className="flex items-center gap-3">
+                  <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-10" />
+                  <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-10" />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
@@ -784,8 +810,22 @@ const MyGamesTab: React.FC<MyGamesTabProps> = ({
 }) => {
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center py-20">
-        <Loader2 className="animate-spin text-teal-500 dark:text-teal-400" size={32} />
+      <div className="p-4">
+        <div className="grid grid-cols-2 gap-3">
+          {[1, 2, 3].map(i => (
+            <div key={i} className="rounded-2xl overflow-hidden bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse w-full h-32" />
+              <div className="p-3">
+                <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-3/4 mb-2" />
+                <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-1/2 mb-3" />
+                <div className="flex items-center gap-3">
+                  <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-10" />
+                  <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-10" />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }

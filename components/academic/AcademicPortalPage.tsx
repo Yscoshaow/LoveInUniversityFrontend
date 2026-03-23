@@ -204,9 +204,42 @@ export const AcademicPortalPage: React.FC<AcademicPortalPageProps> = ({ onBack, 
 
   if (loading) {
     return (
-      <div className="h-full bg-slate-50 dark:bg-slate-900 flex flex-col items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-primary" />
-        <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">加载中...</p>
+      <div className="h-full bg-slate-50 dark:bg-slate-900 flex flex-col relative overflow-y-auto no-scrollbar">
+        <div className="p-6 pb-32 lg:pb-8 lg:max-w-[1100px] lg:mx-auto lg:w-full">
+          {/* Header skeleton */}
+          <div className="flex items-center gap-4 mb-6">
+            <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full h-10 w-10" />
+            <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-7 w-28" />
+          </div>
+
+          {/* Tabs skeleton */}
+          <div className="flex p-1 bg-slate-100 dark:bg-slate-700 rounded-xl mb-6 lg:max-w-xs">
+            <div className="flex-1 py-2.5 flex justify-center">
+              <div className="bg-slate-200 dark:bg-slate-600 animate-pulse rounded-lg h-4 w-16" />
+            </div>
+            <div className="flex-1 py-2.5 flex justify-center">
+              <div className="bg-slate-200 dark:bg-slate-600 animate-pulse rounded-lg h-4 w-16" />
+            </div>
+          </div>
+
+          {/* Section title skeleton */}
+          <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-24 mb-3" />
+
+          {/* Course card skeletons */}
+          <div className="space-y-4">
+            {[1, 2, 3, 4].map(i => (
+              <div key={i} className="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-50 dark:border-slate-700">
+                <div className="flex justify-between items-start mb-3">
+                  <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-md h-5 w-14" />
+                  <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-md h-4 w-12" />
+                </div>
+                <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-5 w-40 mb-1" />
+                <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-20 mb-4" />
+                <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full h-2 w-full" />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     );
   }
@@ -752,9 +785,26 @@ function CourseTasksView({ courseId, onBack }: { courseId: number; onBack: () =>
       {/* Body */}
       <div className="flex-1 overflow-y-auto pb-8">
         {isLoading && (
-          <div className="flex flex-col items-center justify-center h-48 gap-2">
-            <Loader2 className="w-6 h-6 animate-spin text-slate-400 dark:text-slate-500" />
-            <span className="text-sm text-slate-400 dark:text-slate-500">加载中...</span>
+          <div className="px-4 pt-4 space-y-6">
+            <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-5 w-32" />
+            {/* Task section skeletons */}
+            {[1, 2].map(s => (
+              <div key={s} className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-4" />
+                  <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-20" />
+                </div>
+                {[1, 2, 3].map(i => (
+                  <div key={i} className="bg-white dark:bg-slate-800 rounded-xl p-3 border border-slate-100 dark:border-slate-700 flex items-center gap-3">
+                    <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full w-8 h-8 shrink-0" />
+                    <div className="flex-1">
+                      <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-36 mb-1" />
+                      <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-20" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ))}
           </div>
         )}
 

@@ -217,8 +217,23 @@ export const ArtGalleryPage: React.FC<ArtGalleryPageProps> = ({ onBack, onItemCl
       {/* Content */}
       <div className="flex-1 overflow-y-auto p-4">
         {loading ? (
-          <div className="flex items-center justify-center py-20">
-            <div className="w-8 h-8 border-3 border-indigo-300 border-t-indigo-600 rounded-full animate-spin" />
+          <div className="grid grid-cols-2 gap-3 lg:grid-cols-3">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-700">
+                <div className="aspect-square bg-slate-200 dark:bg-slate-700 animate-pulse" />
+                <div className="p-2.5 space-y-2">
+                  <div className="h-3.5 w-3/4 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-5 h-5 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+                    <div className="h-2.5 w-16 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="h-2.5 w-10 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+                    <div className="h-2.5 w-10 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         ) : !items?.length ? (
           <div className="flex flex-col items-center justify-center py-20 text-slate-400 dark:text-slate-500">

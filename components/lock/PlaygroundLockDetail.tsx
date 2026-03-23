@@ -428,8 +428,39 @@ export const PlaygroundLockDetail: React.FC<PlaygroundLockDetailProps> = ({
 
   if (isLoading) {
     return (
-      <div className="h-full bg-white dark:bg-slate-800 flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-slate-400 dark:text-slate-500" />
+      <div className="h-full bg-white dark:bg-slate-800 flex flex-col overflow-hidden lg:max-w-[1000px] lg:mx-auto lg:w-full">
+        {/* Header gradient skeleton */}
+        <div className="h-56 lg:h-48 bg-slate-200 dark:bg-slate-700 animate-pulse shrink-0 relative">
+          <div className="absolute top-8 left-6">
+            <div className="bg-white/20 animate-pulse rounded-full h-10 w-10" />
+          </div>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="bg-white/20 animate-pulse rounded-full h-20 w-20" />
+          </div>
+        </div>
+        {/* Lock info skeleton */}
+        <div className="p-5 space-y-4">
+          <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-6 w-40" />
+          <div className="flex gap-3">
+            <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-10 w-24" />
+            <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-10 w-24" />
+            <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-10 w-24" />
+          </div>
+          <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-full" />
+          <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-2/3" />
+        </div>
+        {/* Comments skeleton */}
+        <div className="px-5 space-y-3">
+          {[1, 2].map((i) => (
+            <div key={i} className="flex items-start gap-3">
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full h-8 w-8 shrink-0" />
+              <div className="space-y-2 flex-1">
+                <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-20" />
+                <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-full" />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }

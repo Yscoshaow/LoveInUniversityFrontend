@@ -1004,8 +1004,73 @@ export const LockDetailView: React.FC<LockDetailViewProps> = ({
 
   if (loading) {
     return (
-      <div className="h-full bg-bgMain flex items-center justify-center">
-        <Loader2 className="animate-spin text-primary" size={48} />
+      <div className="h-full bg-bgMain flex flex-col overflow-hidden lg:max-w-[1200px] lg:mx-auto lg:w-full">
+        {/* Header skeleton */}
+        <div className="relative h-[32%] lg:h-[220px] lg:shrink-0 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-b-[40px] flex flex-col items-center justify-end p-6">
+          {/* Back button placeholder */}
+          <div className="absolute top-10 left-6 w-10 h-10 rounded-full bg-slate-300 dark:bg-slate-600" />
+          {/* Lock type badge placeholder */}
+          <div className="absolute top-10 right-6 h-6 w-16 rounded-full bg-slate-300 dark:bg-slate-600" />
+          {/* Lock icon placeholder */}
+          <div className="w-16 h-16 rounded-full bg-slate-300 dark:bg-slate-600 mb-3" />
+          {/* Timer placeholder */}
+          <div className="h-8 w-48 rounded-lg bg-slate-300 dark:bg-slate-600 mb-2" />
+          <div className="h-3 w-20 rounded-full bg-slate-300 dark:bg-slate-600 mb-4" />
+        </div>
+
+        {/* Content skeleton */}
+        <div className="flex-1 px-6 -mt-6 z-20 space-y-4 pt-0">
+          <div className="lg:grid lg:grid-cols-3 lg:gap-6">
+            {/* Left column */}
+            <div className="lg:col-span-2 space-y-4">
+              {/* Progress card skeleton */}
+              <div className="bg-white dark:bg-slate-800 rounded-3xl p-5 shadow-soft">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="h-3.5 w-12 rounded-full bg-slate-200 dark:bg-slate-700 animate-pulse" />
+                  <div className="h-4 w-10 rounded-full bg-slate-200 dark:bg-slate-700 animate-pulse" />
+                </div>
+                <div className="w-full h-3 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+                  <div className="h-full w-2/3 rounded-full bg-slate-200 dark:bg-slate-600 animate-pulse" />
+                </div>
+                <div className="flex justify-between mt-2">
+                  <div className="h-2.5 w-8 rounded-full bg-slate-200 dark:bg-slate-700 animate-pulse" />
+                  <div className="h-2.5 w-8 rounded-full bg-slate-200 dark:bg-slate-700 animate-pulse" />
+                </div>
+              </div>
+
+              {/* Quick stats skeleton */}
+              <div className="grid grid-cols-2 gap-3">
+                {[0, 1].map(i => (
+                  <div key={i} className="bg-white dark:bg-slate-800 rounded-2xl p-4 shadow-soft flex flex-col items-center">
+                    <div className="w-10 h-10 rounded-xl bg-slate-200 dark:bg-slate-700 animate-pulse mb-2" />
+                    <div className="h-2.5 w-12 rounded-full bg-slate-200 dark:bg-slate-700 animate-pulse mb-1.5" />
+                    <div className="h-4 w-16 rounded-full bg-slate-200 dark:bg-slate-700 animate-pulse" />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right column - action buttons skeleton */}
+            <div className="lg:col-span-1 space-y-3 mt-4 lg:mt-0">
+              {[0, 1, 2].map(i => (
+                <div key={i} className="h-12 w-full rounded-2xl bg-slate-200 dark:bg-slate-700 animate-pulse" />
+              ))}
+            </div>
+          </div>
+
+          {/* Info section skeleton */}
+          <div className="bg-white dark:bg-slate-800 rounded-2xl p-4 shadow-soft space-y-3">
+            <div className="h-4 w-24 rounded-full bg-slate-200 dark:bg-slate-700 animate-pulse" />
+            <div className="space-y-2">
+              {[0, 1, 2, 3].map(i => (
+                <div key={i} className="flex items-center justify-between">
+                  <div className="h-3 w-20 rounded-full bg-slate-200 dark:bg-slate-700 animate-pulse" />
+                  <div className="h-3 w-28 rounded-full bg-slate-200 dark:bg-slate-700 animate-pulse" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

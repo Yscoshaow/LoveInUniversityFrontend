@@ -324,6 +324,10 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
 
         {/* --- STUDENT ID CARD --- */}
         <div className="mb-4 lg:col-span-2 lg:mb-0">
+          {!authUser ? (
+            /* Skeleton loading state for student ID card */
+            <div className="w-full aspect-86/54 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-3xl" />
+          ) : (
             <CometCard
               rotateDepth={12}
               translateDepth={15}
@@ -423,13 +427,13 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none"></div>
             </div>
             </CometCard>
-
+          )}
         </div>
 
         {/* --- BIO & TAGS SECTION --- */}
         <div className="bg-white dark:bg-slate-800 p-5 rounded-3xl shadow-soft mb-6 border border-slate-50 dark:border-slate-700 lg:col-span-1 lg:row-span-2 lg:mb-0 lg:h-full">
           {/* Follow Stats - Compact inline */}
-          {followStats && (
+          {followStats ? (
             <div className="flex items-center gap-4 mb-4 pb-4 border-b border-slate-100 dark:border-slate-700">
               <button
                 onClick={onNavigateToFollowing}
@@ -446,6 +450,19 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
                 <span className="text-lg font-bold text-slate-800 dark:text-slate-100">{followStats.followersCount}</span>
                 <span className="text-xs text-slate-500 dark:text-slate-400">粉丝</span>
               </button>
+            </div>
+          ) : (
+            /* Skeleton loading state for follow stats */
+            <div className="flex items-center gap-4 mb-4 pb-4 border-b border-slate-100 dark:border-slate-700">
+              <div className="flex items-center gap-1.5">
+                <div className="h-5 w-8 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+                <div className="h-3 w-6 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+              </div>
+              <div className="w-px h-4 bg-slate-200 dark:bg-slate-700" />
+              <div className="flex items-center gap-1.5">
+                <div className="h-5 w-8 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+                <div className="h-3 w-6 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+              </div>
             </div>
           )}
 
@@ -568,20 +585,36 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
 
         {/* Stats Grid */}
         <div className="grid grid-cols-3 gap-3 mb-6 lg:col-span-2 lg:mb-0">
-          {stats.map((stat, i) => (
-            <div
-              key={i}
-              className="bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-soft border border-slate-50 dark:border-slate-700 flex flex-col items-center text-center gap-2"
-            >
-              <div className={`w-8 h-8 rounded-full ${stat.bg} ${stat.color} flex items-center justify-center`}>
-                <stat.icon size={16} />
+          {!userStats ? (
+            // Skeleton loading state for stats cards
+            [0, 1, 2].map(i => (
+              <div
+                key={i}
+                className="bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-soft border border-slate-50 dark:border-slate-700 flex flex-col items-center text-center gap-2"
+              >
+                <div className="w-8 h-8 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+                <div>
+                  <div className="h-4 w-10 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full mx-auto mb-1" />
+                  <div className="h-2.5 w-12 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full mx-auto" />
+                </div>
               </div>
-              <div>
-                <div className="text-sm font-bold text-slate-800 dark:text-slate-100">{stat.value}</div>
-                <div className="text-[10px] text-slate-400 dark:text-slate-500 font-medium">{stat.label}</div>
+            ))
+          ) : (
+            stats.map((stat, i) => (
+              <div
+                key={i}
+                className="bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-soft border border-slate-50 dark:border-slate-700 flex flex-col items-center text-center gap-2"
+              >
+                <div className={`w-8 h-8 rounded-full ${stat.bg} ${stat.color} flex items-center justify-center`}>
+                  <stat.icon size={16} />
+                </div>
+                <div>
+                  <div className="text-sm font-bold text-slate-800 dark:text-slate-100">{stat.value}</div>
+                  <div className="text-[10px] text-slate-400 dark:text-slate-500 font-medium">{stat.label}</div>
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
 
         {/* --- ACADEMIC CENTER CARD (Entry Point) --- */}

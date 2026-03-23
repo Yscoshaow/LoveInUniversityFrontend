@@ -283,8 +283,83 @@ export const UserProfilePage: React.FC<UserProfilePageProps> = ({
 
   if (loading) {
     return (
-      <div className="h-full bg-slate-50 dark:bg-slate-900 flex items-center justify-center">
-        <Loader2 size={32} className="animate-spin text-primary" />
+      <div className="h-full bg-slate-50 dark:bg-slate-900 flex flex-col overflow-y-auto no-scrollbar lg:max-w-[900px] lg:mx-auto lg:w-full">
+        {/* Header skeleton */}
+        <div className="p-4 flex items-center gap-3 border-b border-slate-100 dark:border-slate-700 bg-white dark:bg-slate-800">
+          <div className="w-9 h-9 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+          <div className="h-4 w-20 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+        </div>
+
+        <div className="p-6 pb-32 lg:pb-8">
+          {/* Student card skeleton */}
+          <div className="mb-6">
+            <div className="w-full aspect-[86/54] bg-slate-200 dark:bg-slate-700 animate-pulse rounded-3xl" />
+          </div>
+
+          {/* Stats grid skeleton (4 columns) */}
+          <div className="bg-white dark:bg-slate-800 p-4 rounded-3xl shadow-soft mb-6 border border-slate-50 dark:border-slate-700">
+            <div className="grid grid-cols-4 gap-2">
+              {[0, 1, 2, 3].map(i => (
+                <div key={i} className="text-center flex flex-col items-center gap-1">
+                  <div className="w-10 h-10 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl" />
+                  <div className="h-5 w-10 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full mt-1" />
+                  <div className="h-2.5 w-12 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Follow stats skeleton */}
+          <div className="bg-white dark:bg-slate-800 p-4 rounded-3xl shadow-soft mb-6 border border-slate-50 dark:border-slate-700">
+            <div className="grid grid-cols-2 gap-4">
+              {[0, 1].map(i => (
+                <div key={i} className="text-center p-3">
+                  <div className="flex items-center justify-center gap-2 mb-1">
+                    <div className="w-4 h-4 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+                    <div className="h-6 w-8 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+                  </div>
+                  <div className="h-3 w-8 mx-auto bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Action buttons skeleton */}
+          <div className="flex items-center gap-2.5 mb-6">
+            <div className="flex-1 h-10 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl" />
+            <div className="flex-1 h-10 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl" />
+          </div>
+
+          {/* Bio section skeleton */}
+          <div className="bg-white dark:bg-slate-800 p-5 rounded-3xl shadow-soft mb-6 border border-slate-50 dark:border-slate-700">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-5 h-5 bg-slate-200 dark:bg-slate-700 animate-pulse rounded" />
+              <div className="h-4 w-16 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+            </div>
+            <div className="space-y-2">
+              <div className="h-3.5 w-full bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+              <div className="h-3.5 w-3/4 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+            </div>
+            {/* Tags skeleton */}
+            <div className="flex gap-2 mt-4">
+              <div className="h-6 w-14 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+              <div className="h-6 w-18 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+              <div className="h-6 w-12 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+            </div>
+          </div>
+
+          {/* Board section skeleton */}
+          <div className="bg-white dark:bg-slate-800 p-5 rounded-3xl shadow-soft border border-slate-50 dark:border-slate-700">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-5 h-5 bg-slate-200 dark:bg-slate-700 animate-pulse rounded" />
+              <div className="h-4 w-20 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div className="h-24 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl" />
+              <div className="h-24 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl" />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

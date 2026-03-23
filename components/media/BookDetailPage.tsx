@@ -397,8 +397,41 @@ export const BookDetailPage: React.FC<BookDetailPageProps> = ({ bookId, onBack, 
   if (isLoading) {
     return (
       <div className="h-full flex flex-col bg-slate-50 dark:bg-slate-900">
-        <div className="flex items-center justify-center flex-1">
-          <Loader2 size={28} className="animate-spin text-indigo-400" />
+        {/* Sticky header skeleton */}
+        <div className="bg-white/90 dark:bg-slate-800/90 border-b border-slate-100 dark:border-slate-700">
+          <div className="flex items-center gap-2 px-3 py-2.5">
+            <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full h-8 w-8" />
+            <div className="flex-1 space-y-1.5">
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-32" />
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-20" />
+            </div>
+          </div>
+        </div>
+        <div className="flex-1 overflow-y-auto">
+          {/* Cover banner skeleton */}
+          <div className="h-44 bg-slate-200 dark:bg-slate-700 animate-pulse lg:flex lg:gap-8 lg:p-6 lg:h-auto">
+            <div className="hidden lg:block lg:w-60 lg:shrink-0 lg:rounded-2xl lg:aspect-2/3 bg-slate-300 dark:bg-slate-600 animate-pulse" />
+          </div>
+          {/* Info section skeleton */}
+          <div className="px-5 pt-4 pb-4 space-y-3">
+            {/* Tags row */}
+            <div className="flex items-center gap-2">
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full h-5 w-14" />
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full h-5 w-10" />
+            </div>
+            {/* Title */}
+            <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-7 w-3/4" />
+            {/* Author */}
+            <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-24" />
+            {/* Description lines */}
+            <div className="space-y-2 pt-2">
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-full" />
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-5/6" />
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-4/6" />
+            </div>
+            {/* Purchase button skeleton */}
+            <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-11 w-full mt-4" />
+          </div>
         </div>
       </div>
     );

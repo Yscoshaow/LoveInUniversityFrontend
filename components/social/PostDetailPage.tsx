@@ -730,8 +730,46 @@ export const PostDetailPage: React.FC<PostDetailPageProps> = ({
 
   if (isLoading) {
     return (
-      <div className="h-full bg-white dark:bg-slate-800 flex items-center justify-center">
-        <Loader2 className="animate-spin text-primary" size={32} />
+      <div className="h-full bg-slate-50 dark:bg-slate-900 flex flex-col lg:max-w-[900px] lg:mx-auto lg:w-full">
+        {/* Header skeleton */}
+        <div className="bg-white dark:bg-slate-800 flex items-center gap-3 px-4 py-3 border-b border-slate-100 dark:border-slate-700">
+          <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full h-8 w-8" />
+          <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-5 w-20" />
+        </div>
+        <div className="bg-white dark:bg-slate-800 p-4 space-y-4">
+          {/* Author row skeleton */}
+          <div className="flex items-center gap-3">
+            <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full h-11 w-11 shrink-0" />
+            <div className="space-y-2 flex-1">
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-28" />
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-16" />
+            </div>
+          </div>
+          {/* Post content skeleton */}
+          <div className="space-y-2">
+            <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-full" />
+            <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-3/4" />
+            <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-1/2" />
+          </div>
+          {/* Action bar skeleton */}
+          <div className="flex gap-6 pt-2">
+            <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-12" />
+            <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-12" />
+            <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-4 w-12" />
+          </div>
+        </div>
+        {/* Comments skeleton */}
+        <div className="p-4 space-y-4">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="flex items-start gap-3">
+              <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full h-8 w-8 shrink-0" />
+              <div className="space-y-2 flex-1">
+                <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-20" />
+                <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-full" />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }

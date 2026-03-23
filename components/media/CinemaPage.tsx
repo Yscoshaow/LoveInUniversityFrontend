@@ -224,8 +224,24 @@ export const CinemaPage: React.FC<CinemaPageProps> = ({ onBack, onVideoClick, on
       {/* Content */}
       <div className="flex-1 overflow-y-auto p-4">
         {loading ? (
-          <div className="flex items-center justify-center py-20">
-            <div className="w-8 h-8 border-3 border-amber-300 border-t-amber-600 rounded-full animate-spin" />
+          <div className="space-y-3 lg:grid lg:grid-cols-2 lg:gap-4 lg:space-y-0">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="w-full bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-700 flex gap-3 p-3">
+                <div className="w-28 h-20 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-lg flex-shrink-0" />
+                <div className="flex-1 min-w-0 space-y-2 py-0.5">
+                  <div className="h-3.5 w-3/4 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-4 h-4 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+                    <div className="h-2.5 w-16 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="h-2.5 w-10 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+                    <div className="h-2.5 w-10 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+                    <div className="h-2.5 w-14 bg-slate-200 dark:bg-slate-700 animate-pulse rounded-full" />
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         ) : !videos?.length ? (
           <div className="flex flex-col items-center justify-center py-20 text-slate-400 dark:text-slate-500">

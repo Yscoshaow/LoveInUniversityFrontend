@@ -657,8 +657,17 @@ export const ShopPage: React.FC<ShopPageProps> = ({ onItemModalChange }) => {
   };
 
   const renderLoading = () => (
-    <div className="flex items-center justify-center py-20">
-      <Loader2 className="w-8 h-8 animate-spin text-slate-400 dark:text-slate-500" />
+    <div className="grid grid-cols-3 gap-2.5 md:grid-cols-4 lg:grid-cols-5">
+      {[1, 2, 3, 4, 5, 6].map(i => (
+        <div key={i} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 p-3 flex flex-col items-center">
+          {/* Item icon skeleton */}
+          <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl w-14 h-14 mb-2" />
+          {/* Item name skeleton */}
+          <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-16 mb-1" />
+          {/* Item price skeleton */}
+          <div className="bg-slate-200 dark:bg-slate-700 animate-pulse rounded-xl h-3 w-10" />
+        </div>
+      ))}
     </div>
   );
 
