@@ -81,6 +81,73 @@ const API_ENDPOINTS = [
   "isFrozen": false
 }]`,
   },
+  {
+    method: 'GET',
+    path: '/open/credits',
+    description: '学分与点数',
+    response: `{
+  "credits": 150,
+  "campusPoints": 1200
+}`,
+  },
+  {
+    method: 'GET',
+    path: '/open/tasks',
+    description: '今日任务',
+    params: 'date=2026-03-24 指定日期（可选）',
+    response: `{
+  "date": "2026-03-24",
+  "totalTasks": 3,
+  "completedTasks": 1,
+  "inProgressTasks": 1,
+  "pendingTasks": 1,
+  "tasks": [{
+    "id": 1,
+    "courseName": "数学",
+    "taskName": "每日练习",
+    "status": "COMPLETED"
+  }]
+}`,
+  },
+  {
+    method: 'GET',
+    path: '/open/schedule',
+    description: '课程日程',
+    params: 'date=2026-03-24 指定日期（可选）',
+    response: `[{
+  "id": 1,
+  "title": "高数课",
+  "date": "2026-03-24",
+  "startTime": "09:00",
+  "endTime": "10:30",
+  "location": "教学楼 A301",
+  "status": "UPCOMING"
+}]`,
+  },
+  {
+    method: 'GET',
+    path: '/open/supervision',
+    description: '监督协议',
+    response: `{
+  "hasSupervisor": true,
+  "supervisorName": "Alice",
+  "superviseeCount": 2,
+  "superviseesNames": ["Bob", "Carol"],
+  "pendingRequestCount": 0
+}`,
+  },
+  {
+    method: 'GET',
+    path: '/open/notifications',
+    description: '未读通知',
+    response: `{
+  "unreadCount": 5,
+  "byType": {
+    "LOCK_READY_TO_UNLOCK": 2,
+    "TASK_COMPLETED": 3
+  }
+}`,
+  },
 ];
 
 const ApiDocSection: React.FC = () => {
