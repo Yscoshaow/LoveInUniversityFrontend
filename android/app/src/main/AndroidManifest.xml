@@ -107,6 +107,11 @@
             android:exported="false"
             android:foregroundServiceType="mediaPlayback" />
 
+        <!-- Floating Lyrics Overlay Service -->
+        <service
+            android:name=".FloatingLyricsService"
+            android:exported="false" />
+
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -121,6 +126,7 @@
 
     <!-- Permissions -->
 
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />

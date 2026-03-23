@@ -4,7 +4,9 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.net.Uri
 import android.os.Build
+import android.provider.Settings
 import com.getcapacitor.JSObject
 import com.getcapacitor.Plugin
 import com.getcapacitor.PluginCall
@@ -89,6 +91,9 @@ class MusicBridgePlugin : Plugin() {
         // Start/update notification service
         startNotificationService()
 
+        // Broadcast subtitle update for floating lyrics overlay
+        broadcastSubtitleUpdate(subtitleText)
+
         call.resolve()
     }
 
@@ -102,6 +107,49 @@ class MusicBridgePlugin : Plugin() {
         stopNotificationService()
 
         call.resolve()
+    }
+
+    @PluginMethod
+    fun startFloatingLyrics(call: PluginCall) {
+        if (!Settings.canDrawOverlays(context)) {
+            // Open system overlay permission settings
+            val intent = Intent(
+                Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                Uri.parse("package:${context.packageName}")
+            ).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            }
+            context.startActivity(intent)
+            val result = JSObject()
+            result.put("started", false)
+            result.put("reason", "overlay_permission_required")
+            call.resolve(result)
+            return
+        }
+
+        val intent = Intent(context, FloatingLyricsService::class.java)
+        context.startService(intent)
+
+        val result = JSObject()
+        result.put("started", true)
+        call.resolve(result)
+    }
+
+    @PluginMethod
+    fun stopFloatingLyrics(call: PluginCall) {
+        val intent = Intent(context, FloatingLyricsService::class.java)
+        context.stopService(intent)
+        call.resolve()
+    }
+
+    private fun broadcastSubtitleUpdate(subtitleText: String) {
+        try {
+            val intent = Intent(FloatingLyricsService.ACTION_LYRICS_UPDATE).apply {
+                putExtra(FloatingLyricsService.EXTRA_SUBTITLE_TEXT, subtitleText)
+                setPackage(context.packageName)
+            }
+            context.sendBroadcast(intent)
+        } catch (_: Exception) {}
     }
 
     private fun startNotificationService() {

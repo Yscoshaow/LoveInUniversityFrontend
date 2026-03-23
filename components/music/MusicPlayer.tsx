@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import { musicApi, MusicBridge } from '../../lib/api';
 import { isNativeIOS } from '../../lib/environment';
+import { FloatingLyricsButton } from './FloatingLyrics';
 import { useQueryClient } from '@tanstack/react-query';
 import { queryKeys } from '../../lib/query-client';
 
@@ -952,6 +953,7 @@ function MusicPlayerBar({ navVisible, inMusicRoom }: { navVisible: boolean; inMu
                 <button onClick={player.toggleMute} className="p-2 text-white/50 hover:text-white">
                   {player.muted ? <VolumeX size={18} /> : <Volume2 size={18} />}
                 </button>
+                <FloatingLyricsButton />
               </div>
             </div>
           </div>
@@ -1043,14 +1045,17 @@ function MusicPlayerBar({ navVisible, inMusicRoom }: { navVisible: boolean; inMu
                 </button>
               </div>
 
-              {/* Open full-screen */}
-              <button
-                onClick={() => { setIslandExpanded(false); setExpanded(true); }}
-                className="p-1.5 text-white/30 hover:text-white/50 transition-colors"
-                title="全屏播放"
-              >
-                <ChevronUp size={14} />
-              </button>
+              <div className="flex items-center gap-1">
+                <FloatingLyricsButton className="p-1.5!" />
+                {/* Open full-screen */}
+                <button
+                  onClick={() => { setIslandExpanded(false); setExpanded(true); }}
+                  className="p-1.5 text-white/30 hover:text-white/50 transition-colors"
+                  title="全屏播放"
+                >
+                  <ChevronUp size={14} />
+                </button>
+              </div>
             </div>
           </div>
         </div>
