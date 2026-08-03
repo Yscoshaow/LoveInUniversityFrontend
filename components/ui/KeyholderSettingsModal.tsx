@@ -1005,7 +1005,7 @@ export const KeyholderSettingsModal: React.FC<KeyholderSettingsModalProps> = ({
                 {isDiceEnabled && (
                   <div className="px-4 pb-4 pt-2 border-t border-slate-100 dark:border-slate-700 space-y-4">
                     <p className="text-xs text-slate-500 dark:text-slate-400">
-                      时间变化按总锁定时长的百分比计算，在设定范围内随机。
+                      时间变化按初始锁定时长的百分比计算，在设定范围内随机。
                     </p>
                     <DiceConfigForm config={diceConfig} onChange={setDiceConfig} />
                     <button
@@ -1205,7 +1205,7 @@ const DiceConfigForm: React.FC<{
         </div>
       </div>
     </div>
-    <p className="text-xs text-slate-400 dark:text-slate-500">时间变化将在此百分比范围内随机（基于总锁定时长）</p>
+    <p className="text-xs text-slate-400 dark:text-slate-500">时间变化将在此百分比范围内随机（基于初始锁定时长）</p>
     <div>
       <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1.5">冷却时间（分钟）</label>
       <input
@@ -1417,7 +1417,7 @@ const CoinTossConfigForm: React.FC<{
             />
             <span className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 text-sm">%</span>
           </div>
-          <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">每枚硬币增加总时长的 {config.percentagePerCoin}%</p>
+          <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">每枚硬币增加初始时长的 {config.percentagePerCoin}%</p>
         </div>
       ) : (
         <div>
@@ -1476,7 +1476,7 @@ const VoteUnlockConfigForm: React.FC<{
         onChange={e => onChange({ ...config, penaltyPercent: Number(e.target.value) })}
         className="w-full px-3 py-2.5 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-violet-500/20 focus:border-violet-500 transition-all"
       />
-      <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">投票失败时增加总时长的此百分比作为惩罚</p>
+      <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">投票失败时增加初始时长的此百分比作为惩罚</p>
     </div>
   </>
 );
