@@ -1526,7 +1526,7 @@ export const CreateLockWizard: React.FC<CreateLockWizardProps> = ({
                       onKeyDown={blockScientificNotation}
                       className="w-full px-3 py-2.5 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-violet-500/20 focus:border-violet-500 transition-all"
                     />
-                    <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">投票失败时增加总时长的此百分比作为惩罚</p>
+                    <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">投票失败时增加初始时长的此百分比作为惩罚</p>
                   </div>
                 </div>
               )}
@@ -1555,7 +1555,7 @@ export const CreateLockWizard: React.FC<CreateLockWizardProps> = ({
               {diceEnabled && (
                 <div className="px-4 pb-4 pt-2 border-t border-slate-100 dark:border-slate-700 space-y-4">
                   <p className="text-xs text-slate-500 dark:text-slate-400">
-                    你和系统各掷一个骰子，你的点数大于系统则减少时间，否则增加时间。时间变化基于锁的总时长百分比计算。
+                    你和系统各掷一个骰子，你的点数大于系统则减少时间，否则增加时间。时间变化基于锁的初始时长百分比计算。
                   </p>
 
                   <div className="grid grid-cols-2 gap-3">
@@ -1584,7 +1584,7 @@ export const CreateLockWizard: React.FC<CreateLockWizardProps> = ({
                       />
                     </div>
                   </div>
-                  <p className="text-xs text-slate-400 dark:text-slate-500">每次掷骰子时，时间变化为总时长的 {diceConfig.minPercentage}% ~ {diceConfig.maxPercentage}%</p>
+                  <p className="text-xs text-slate-400 dark:text-slate-500">每次掷骰子时，时间变化为初始时长的 {diceConfig.minPercentage}% ~ {diceConfig.maxPercentage}%</p>
 
                   <div>
                     <label className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1.5">冷却时间（分钟）</label>
@@ -1812,7 +1812,7 @@ export const CreateLockWizard: React.FC<CreateLockWizardProps> = ({
                           onKeyDown={blockScientificNotation}
                           className="w-full px-3 py-2.5 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-all"
                         />
-                        <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">每枚硬币增加总时长的 {coinTossConfig.percentagePerCoin}%</p>
+                        <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">每枚硬币增加初始时长的 {coinTossConfig.percentagePerCoin}%</p>
                       </div>
                     ) : (
                       <div>

@@ -671,7 +671,7 @@ export const PlaygroundLockDetail: React.FC<PlaygroundLockDetailProps> = ({
             </div>
             <p className="text-xs text-slate-500 dark:text-slate-400 mb-3">
               每枚硬币 = 1 校园点数，增加 {coinTossInfo.usePercentage
-                ? `${coinTossInfo.percentagePerCoin}% 总时长`
+                ? `${coinTossInfo.percentagePerCoin}% 初始时长`
                 : `${coinTossInfo.minutesPerCoin} 分钟`}。
               已投 {coinTossInfo.userCoinsTossed}/{coinTossInfo.maxCoinsPerPlayer} 枚
             </p>
