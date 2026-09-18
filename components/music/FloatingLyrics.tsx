@@ -230,23 +230,49 @@ export function FloatingLyricsButton({ className = '' }: { className?: string })
       style.textContent = PIP_STYLES;
       pip.document.head.appendChild(style);
 
-      // Build content
+      // Build static skeleton (no dynamic user input in innerHTML to prevent XSS)
       const track = player.currentTrack;
       pip.document.body.innerHTML = `
         <div class="pip-header">
-          <img id="pip-cover" class="pip-cover" src="${track?.coverUrl || ''}" alt="" onerror="this.style.display='none'" />
+          <img id="pip-cover" class="pip-cover" alt="" style="display: none;" />
           <div class="pip-info">
-            <div id="pip-title" class="pip-title">${track?.title || ''}</div>
-            <div id="pip-work" class="pip-work">${track?.workTitle || ''}</div>
+            <div id="pip-title" class="pip-title"></div>
+            <div id="pip-work" class="pip-work"></div>
           </div>
           <div id="pip-status" class="pip-status ${player.playing ? 'playing' : 'paused'}"></div>
         </div>
         <div class="pip-lyrics">
-          <div id="pip-lyric" class="pip-lyric-text fade-in">
-            ${player.subtitleText || '<span class="pip-empty">♪</span>'}
-          </div>
+          <div id="pip-lyric" class="pip-lyric-text fade-in"></div>
         </div>
       `;
+
+      // Safely populate text content using textContent (immune to XSS)
+      const titleEl = pip.document.getElementById('pip-title');
+      if (titleEl) titleEl.textContent = track?.title || '';
+
+      const workEl = pip.document.getElementById('pip-work');
+      if (workEl) workEl.textContent = track?.workTitle || '';
+
+      const lyricEl = pip.document.getElementById('pip-lyric');
+      if (lyricEl) {
+        if (player.subtitleText) {
+          lyricEl.textContent = player.subtitleText;
+        } else {
+          const emptySpan = pip.document.createElement('span');
+          emptySpan.className = 'pip-empty';
+          emptySpan.textContent = '♪';
+          lyricEl.appendChild(emptySpan);
+        }
+      }
+
+      const coverEl = pip.document.getElementById('pip-cover') as HTMLImageElement | null;
+      if (coverEl) {
+        coverEl.onerror = () => { coverEl.style.display = 'none'; };
+        if (track?.coverUrl) {
+          coverEl.src = track.coverUrl;
+          coverEl.style.display = '';
+        }
+      }
 
       lyricRef.current = player.subtitleText || '';
 
